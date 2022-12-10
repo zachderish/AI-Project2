@@ -165,6 +165,8 @@ def main():
     points = [["" for x in range(10)] for y in range(10)]
     # actions to be used in simulations
     moves = [["" for x in range(10)] for y in range(10)]
+    # readings to be used in simulations
+    observations = [["" for x in range(10)] for y in range(10)]
     for j in range(10):
         for i in range(10):
             # write ground truth files
@@ -174,6 +176,7 @@ def main():
                 path, actions, readings = sequence(startpoint, j)
                 points[j][i] = path
                 moves[j][i] = actions
+                observations[j][i] = readings
                 path.insert(0,startpoint)
                 f.write(str(startpoint) + "\n")
                 f.write(str(path) + "\n")
@@ -181,7 +184,7 @@ def main():
                 f.write(str(readings) + "\n")
         
     # call graphics program
-    graphics.graphics(graphs, points, moves)
+    graphics.graphics(graphs, points, moves, observations)
 
 
 main()
